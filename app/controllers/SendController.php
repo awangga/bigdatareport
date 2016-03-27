@@ -48,10 +48,10 @@ class SendController extends \Phalcon\Mvc\Controller
 	{
 		$this->view->title = "Sending Group - ";
 		$this->view->selectmenu = "mgroup";
-		$groups = Users::aggregate(
+		$groups = Pbk_groups::aggregate(
 		        array(
 		            '$group' => array(
-		                '_id' => '$group'
+		                'ID' => '$group'
 		            )
 		        )    
 		);
