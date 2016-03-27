@@ -84,7 +84,8 @@ $di->setShared('session', function () {
     return $session;
 });
 
-// Simple database connection to localhost
+// Simple noSQL mongoDB connection to localhost
+/*
 $di->set('mongo', function () {
     $mongo = new MongoClient();
     return $mongo->selectDB('peuyeum');
@@ -100,3 +101,4 @@ $di->set(
         return new SmsWeb();
     }
 );
+*/
