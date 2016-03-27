@@ -8,7 +8,7 @@
 	    <meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="description" content="Peuyeum : SMS Gateway Web Service Interface Module">
 	    <meta name="author" content="Rolly Maulana Awangga">
-	<title>{{ title }} SMS Gateway Web Service Interface Module</title>
+	<title>{{ title }} Big Data Report</title>
 		{{ stylesheet_link("css/bootstrap.min.css") }}
 		{{ stylesheet_link("css/simple-sidebar.css") }}
 		{{ stylesheet_link("font-awesome-4.3.0/css/font-awesome.min.css") }}
@@ -26,7 +26,7 @@
 		                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"  id="menu-toggle">
 		                      <span class="glyphicon glyphicon-th-large" aria-hidden="true"></span>
 		                    </button>
-							{{ link_to('','<i class="fa fa-rocket fa-4"></i> peuyeum', 'class': 'navbar-brand') }}
+							{{ link_to('','<i class="fa fa-rocket fa-4"></i> BigDataReport', 'class': 'navbar-brand') }}
 		                     
 		                </div><!-- navbar-header-->
 
