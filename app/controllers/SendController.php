@@ -48,13 +48,7 @@ class SendController extends \Phalcon\Mvc\Controller
 	{
 		$this->view->title = "Sending Group - ";
 		$this->view->selectmenu = "mgroup";
-		$groups = Pbk_groups::aggregate(
-		        array(
-		            '$group' => array(
-		                'ID' => '$group'
-		            )
-		        )    
-		);
+		$groups = Pbk_groups::find();
 		$this->view->kel = $groups['result'];
 		if($this->request->isPost()){
 			$group=$this->request->getPost('group');
