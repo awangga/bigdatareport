@@ -16,7 +16,7 @@ $start_date = $_GET["s"]." 00:00:00";
 $end_date = $_GET["e"]." 23:59:59";
 //$status = "SendingOKNoReport";
 $status = $_GET["stat"];
-$sql = "SELECT SendingDateTime, DestinationNumber, TextDecoded, Status FROM sentitems WHERE Status = '".$status."' AND call_start_time BETWEEN '".$start_date."' AND '".$end_date."' ";
+$sql = "SELECT SendingDateTime, DestinationNumber, TextDecoded, Status FROM sentitems WHERE Status = '".$status."' AND SendingDateTime BETWEEN '".$start_date."' AND '".$end_date."' ";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     // output data of each row
