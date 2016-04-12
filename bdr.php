@@ -20,12 +20,15 @@ $sql = "SELECT SendingDateTime, DestinationNumber, TextDecoded, Status FROM sent
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     // output data of each row
+	$fp = fopen('report.csv', 'w');
     while($row = $result->fetch_assoc()) {
-        echo "Tanggal: " . $row["SendingDateTime"]. " - Tujuan dan Pesan: " . $row["DestinationNumber"]. " " . $row["TextDecoded"]. "<br>";
+		fputcsv($fp, $row);
+        //echo "Tanggal: " . $row["SendingDateTime"]. " - Tujuan dan Pesan: " . $row["DestinationNumber"]. " " . $row["TextDecoded"]. "<br>";
     }
 } else {
     echo "0 results";
 	echo $sql;
 }
+fclose($fp);
 $conn->close();
 ?>
