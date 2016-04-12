@@ -14,7 +14,8 @@ $cur_date_end = date('Y-m')."-31"." 23:59:59";
 $bulan_ayeuna = "AND call_start_time BETWEEN '".$cur_date_start."' AND '".$cur_date_end."' ";
 $start_date = $_GET["s"]." 00:00:00";
 $end_date = $_GET["e"]." 23:59:59";
-$status = "SendingOKNoReport";
+//$status = "SendingOKNoReport";
+$status = $_GET["stat"];
 $sql = "SELECT SendingDateTime, DestinationNumber, TextDecoded, Status FROM cdrs WHERE Status = ".$status." AND call_start_time BETWEEN '".$start_date."' AND '".$end_date."' ";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
