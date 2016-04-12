@@ -16,11 +16,23 @@ $start_date = $_GET["s"]." 00:00:00";
 $end_date = $_GET["e"]." 23:59:59";
 //$status = "SendingOKNoReport";
 $status = $_GET["stat"];
+$cid = $_GET["cid"];
+
 if (isset($_GET['cid'])){
-	$cid = $_GET["cid"];
-	$sql = "SELECT ID, SendingDateTime, DestinationNumber, TextDecoded, Status FROM sentitems WHERE Status = '".$status."' AND CreatorID = '".$cid."' AND SendingDateTime BETWEEN '".$start_date."' AND '".$end_date."' ";
+	if(isset($_GET['stat'])){
+		$sql = "SELECT ID, SendingDateTime, DestinationNumber, TextDecoded, Status FROM sentitems WHERE Status = '".$status."' AND CreatorID = '".$cid."' AND SendingDateTime BETWEEN '".$start_date."' AND '".$end_date."' ";
+	}else{
+		$sql = "SELECT ID, SendingDateTime, DestinationNumber, TextDecoded, Status FROM sentitems WHERE CreatorID = '".$cid."' AND SendingDateTime BETWEEN '".$start_date."' AND '".$end_date."' ";
+	}
+	
+	
 }else {
-	$sql = "SELECT ID, SendingDateTime, DestinationNumber, TextDecoded, Status FROM sentitems WHERE Status = '".$status."' AND SendingDateTime BETWEEN '".$start_date."' AND '".$end_date."' ";
+	if(isset($_GET['stat'])){
+		$sql = "SELECT ID, SendingDateTime, DestinationNumber, TextDecoded, Status FROM sentitems WHERE Status = '".$status."' AND SendingDateTime BETWEEN '".$start_date."' AND '".$end_date."' ";
+	}else{
+		$sql = "SELECT ID, SendingDateTime, DestinationNumber, TextDecoded, Status FROM sentitems WHERE SendingDateTime BETWEEN '".$start_date."' AND '".$end_date."' ";
+	}
+	
 }
 
 $result = $conn->query($sql);
