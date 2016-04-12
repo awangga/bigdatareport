@@ -16,14 +16,20 @@ $start_date = $_GET["s"]." 00:00:00";
 $end_date = $_GET["e"]." 23:59:59";
 //$status = "SendingOKNoReport";
 $status = $_GET["stat"];
-$sql = "SELECT SendingDateTime, DestinationNumber, TextDecoded, Status FROM sentitems WHERE Status = '".$status."' AND SendingDateTime BETWEEN '".$start_date."' AND '".$end_date."' ";
+if (isset($_GET['cid'])){
+	$cid = $_GET["cid"];
+	$sql = "SELECT ID, SendingDateTime, DestinationNumber, TextDecoded, Status FROM sentitems WHERE Status = '".$status."' AND CreatorID = '".$cid."' AND SendingDateTime BETWEEN '".$start_date."' AND '".$end_date."' ";
+}else {
+	$sql = "SELECT ID, SendingDateTime, DestinationNumber, TextDecoded, Status FROM sentitems WHERE Status = '".$status."' AND SendingDateTime BETWEEN '".$start_date."' AND '".$end_date."' ";
+}
+
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     // output data of each row
 	header('Content-Type: text/csv; charset=utf-8');
 	header('Content-Disposition: attachment; filename=data.csv');
 	$output = fopen('php://output', 'w');
-	fputcsv($output, array('SendingDateTime', 'DestinationNumber', 'TextDecoded','Pesan'));
+	fputcsv($output, array('ID SMS','Tanggal Jam', 'Nomor', 'SMS','Status'));
     while($row = $result->fetch_assoc()) {
 		fputcsv($output, $row);
         //echo "Tanggal: " . $row["SendingDateTime"]. " - Tujuan dan Pesan: " . $row["DestinationNumber"]. " " . $row["TextDecoded"]. "<br>";
