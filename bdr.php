@@ -21,7 +21,7 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     // output data of each row
 	header('Content-Type: text/csv; charset=utf-8');
-	header('Content-Disposition: attachment; filename=data.csv');
+	//header('Content-Disposition: attachment; filename=data.csv');
 	$fp = fopen('report.csv', 'w');
     while($row = $result->fetch_assoc()) {
 		fputcsv($fp, $row);
