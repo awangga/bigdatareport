@@ -20,17 +20,18 @@ $sql = "SELECT SendingDateTime, DestinationNumber, TextDecoded, Status FROM sent
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     // output data of each row
-	//header('Content-Type: text/csv; charset=utf-8');
-	//header('Content-Disposition: attachment; filename=data.csv');
-	$fp = fopen('report.csv', 'w');
+	header('Content-Type: text/csv; charset=utf-8');
+	header('Content-Disposition: attachment; filename=data.csv');
+	$output = fopen('php://output', 'w');
+	fputcsv($output, array('SendingDateTime', 'DestinationNumber', 'TextDecoded','Pesan'));
     while($row = $result->fetch_assoc()) {
-		fputcsv($fp, $row);
+		fputcsv($output, $row);
         //echo "Tanggal: " . $row["SendingDateTime"]. " - Tujuan dan Pesan: " . $row["DestinationNumber"]. " " . $row["TextDecoded"]. "<br>";
     }
 } else {
     echo "0 results";
 	echo $sql;
 }
-fclose($fp);
+//fclose($fp);
 $conn->close();
 ?>
