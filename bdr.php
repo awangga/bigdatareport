@@ -41,7 +41,7 @@ if ($result->num_rows > 0) {
 	header('Content-Type: text/csv; charset=utf-8');
 	header('Content-Disposition: attachment; filename=data.csv');
 	$output = fopen('php://output', 'w');
-	fputcsv($output, array('ID SMS','Tanggal Jam','Name', 'Nomor', 'SMS','Status'));
+	fputcsv($output, array('IDSMS','Tanggal Jam','Name', 'Nomor', 'SMS','Status'));
     while($row = $result->fetch_assoc()) {
 		fputcsv($output, $row);
         //echo "Tanggal: " . $row["SendingDateTime"]. " - Tujuan dan Pesan: " . $row["DestinationNumber"]. " " . $row["TextDecoded"]. "<br>";
