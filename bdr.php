@@ -1,5 +1,5 @@
 <?php
-$servername = "semar.singa.ga";
+$servername = "semar.astrajing.ga";
 $username = "iqromedi";
 $password = "dPf7KBzZF";
 $dbname = "iqromedi";
