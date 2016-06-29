@@ -20,17 +20,17 @@ $cid = $_GET["cid"];
 
 if (isset($_GET['cid'])){
 	if(isset($_GET['stat'])){
-		$sql = "SELECT ID, SendingDateTime,Name, DestinationNumber, TextDecoded, Status FROM sentitems,pbk WHERE pbk.GroupID=sentitems.CreatorID AND Status LIKE '".$status."%' AND CreatorID = '".$cid."' AND SendingDateTime BETWEEN '".$start_date."' AND '".$end_date."' ";
+		$sql = "SELECT sentitems.ID, SendingDateTime,Name, DestinationNumber, TextDecoded, Status FROM sentitems,pbk WHERE pbk.GroupID=sentitems.CreatorID AND Status LIKE '".$status."%' AND CreatorID = '".$cid."' AND SendingDateTime BETWEEN '".$start_date."' AND '".$end_date."' ";
 	}else{
-		$sql = "SELECT ID, SendingDateTime,Name, DestinationNumber, TextDecoded, Status FROM sentitems,pbk WHERE pbk.GroupID=sentitems.CreatorID AND CreatorID = '".$cid."' AND SendingDateTime BETWEEN '".$start_date."' AND '".$end_date."' ";
+		$sql = "SELECT sentitems.ID, SendingDateTime,Name, DestinationNumber, TextDecoded, Status FROM sentitems,pbk WHERE pbk.GroupID=sentitems.CreatorID AND CreatorID = '".$cid."' AND SendingDateTime BETWEEN '".$start_date."' AND '".$end_date."' ";
 	}
 	
 	
 }else {
 	if(isset($_GET['stat'])){
-		$sql = "SELECT ID, SendingDateTime,Name, DestinationNumber, TextDecoded, Status FROM sentitems,pbk WHERE pbk.GroupID=sentitems.CreatorID AND Status LIKE '".$status."%' AND SendingDateTime BETWEEN '".$start_date."' AND '".$end_date."' ";
+		$sql = "SELECT sentitems.ID, SendingDateTime,Name, DestinationNumber, TextDecoded, Status FROM sentitems,pbk WHERE pbk.GroupID=sentitems.CreatorID AND Status LIKE '".$status."%' AND SendingDateTime BETWEEN '".$start_date."' AND '".$end_date."' ";
 	}else{
-		$sql = "SELECT ID, SendingDateTime,Name, DestinationNumber, TextDecoded, Status FROM sentitems,pbk WHERE pbk.GroupID=sentitems.CreatorID AND SendingDateTime BETWEEN '".$start_date."' AND '".$end_date."' ";
+		$sql = "SELECT sentitems.ID, SendingDateTime,Name, DestinationNumber, TextDecoded, Status FROM sentitems,pbk WHERE pbk.GroupID=sentitems.CreatorID AND SendingDateTime BETWEEN '".$start_date."' AND '".$end_date."' ";
 	}
 	
 }
