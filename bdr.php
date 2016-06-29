@@ -28,9 +28,9 @@ if (isset($_GET['cid'])){
 	
 }else {
 	if(isset($_GET['stat'])){
-		$sql = "SELECT sentitems.ID, SendingDateTime,Name, DestinationNumber, TextDecoded, Status FROM sentitems WHERE  Status LIKE '".$status."%' AND SendingDateTime BETWEEN '".$start_date."' AND '".$end_date."' ";
+		$sql = "SELECT sentitems.ID, SendingDateTime, DestinationNumber, TextDecoded, Status FROM sentitems WHERE  Status LIKE '".$status."%' AND SendingDateTime BETWEEN '".$start_date."' AND '".$end_date."' ";
 	}else{
-		$sql = "SELECT sentitems.ID, SendingDateTime,Name, DestinationNumber, TextDecoded, Status FROM sentitems WHERE  SendingDateTime BETWEEN '".$start_date."' AND '".$end_date."' ";
+		$sql = "SELECT sentitems.ID, SendingDateTime, DestinationNumber, TextDecoded, Status FROM sentitems WHERE  SendingDateTime BETWEEN '".$start_date."' AND '".$end_date."' ";
 	}
 	
 }
