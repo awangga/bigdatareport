@@ -20,17 +20,17 @@ $cid = $_GET["cid"];
 
 if (isset($_GET['cid'])){
 	if(isset($_GET['stat'])){
-		$sql = "SELECT sentitems.ID, SendingDateTime,Name, DestinationNumber, TextDecoded, Status FROM sentitems,pbk WHERE pbk.GroupID=sentitems.CreatorID AND Status LIKE '".$status."%' AND CreatorID = '".$cid."' AND SendingDateTime BETWEEN '".$start_date."' AND '".$end_date."' ";
+		$sql = "SELECT sentitems.ID, SendingDateTime, DestinationNumber, TextDecoded, Status FROM sentitems WHERE  Status LIKE '".$status."%' AND CreatorID = '".$cid."' AND SendingDateTime BETWEEN '".$start_date."' AND '".$end_date."' ";
 	}else{
-		$sql = "SELECT sentitems.ID, SendingDateTime,Name, DestinationNumber, TextDecoded, Status FROM sentitems,pbk WHERE pbk.GroupID=sentitems.CreatorID AND CreatorID = '".$cid."' AND SendingDateTime BETWEEN '".$start_date."' AND '".$end_date."' ";
+		$sql = "SELECT sentitems.ID, SendingDateTime, DestinationNumber, TextDecoded, Status FROM sentitems WHERE  CreatorID = '".$cid."' AND SendingDateTime BETWEEN '".$start_date."' AND '".$end_date."' ";
 	}
 	
 	
 }else {
 	if(isset($_GET['stat'])){
-		$sql = "SELECT sentitems.ID, SendingDateTime,Name, DestinationNumber, TextDecoded, Status FROM sentitems,pbk WHERE pbk.GroupID=sentitems.CreatorID AND Status LIKE '".$status."%' AND SendingDateTime BETWEEN '".$start_date."' AND '".$end_date."' ";
+		$sql = "SELECT sentitems.ID, SendingDateTime,Name, DestinationNumber, TextDecoded, Status FROM sentitems WHERE  Status LIKE '".$status."%' AND SendingDateTime BETWEEN '".$start_date."' AND '".$end_date."' ";
 	}else{
-		$sql = "SELECT sentitems.ID, SendingDateTime,Name, DestinationNumber, TextDecoded, Status FROM sentitems,pbk WHERE pbk.GroupID=sentitems.CreatorID AND SendingDateTime BETWEEN '".$start_date."' AND '".$end_date."' ";
+		$sql = "SELECT sentitems.ID, SendingDateTime,Name, DestinationNumber, TextDecoded, Status FROM sentitems WHERE  SendingDateTime BETWEEN '".$start_date."' AND '".$end_date."' ";
 	}
 	
 }
@@ -41,7 +41,7 @@ if ($result->num_rows > 0) {
 	header('Content-Type: text/csv; charset=utf-8');
 	header('Content-Disposition: attachment; filename=data.csv');
 	$output = fopen('php://output', 'w');
-	fputcsv($output, array('IDSMS','Tanggal Jam','Name', 'Nomor', 'SMS','Status'));
+	fputcsv($output, array('IDSMS','Tanggal Jam', 'Nomor', 'SMS','Status'));
     while($row = $result->fetch_assoc()) {
 		fputcsv($output, $row);
         //echo "Tanggal: " . $row["SendingDateTime"]. " - Tujuan dan Pesan: " . $row["DestinationNumber"]. " " . $row["TextDecoded"]. "<br>";
